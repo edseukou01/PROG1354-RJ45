@@ -1,18 +1,21 @@
-#include <Arduino.h>
+#include <Arduino.h> // Inclure la bibliothèque Arduino pour utiliser les fonctions Arduino
+#include "cable.h"   // Inclure le fichier d'en-tête de la classe Cable
 
-// put function declarations here:
-int myFunction(int, int);
+// Définir les broches d'entrée et de sortie du câble
+int inputPins[] = {15, 2, 4, 5, 18, 19, 21, 22};
+int outputPins[] = {13, 14, 27, 26, 25, 33, 32, 12};
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  // Initialise la communication série pour le débogage
+  Serial.begin(9600);
+  
+  // Crée une instance de la classe Cable avec les broches définies
+  Cable cable(inputPins, outputPins);
+
+  // Vérifie si le câble est un câble droit ou croisé
+  cable.checkCableType();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  // rien ici
 }
